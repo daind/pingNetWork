@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		95024BEF237C633E00876333 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95024BEE237C633E00876333 /* APIClient.swift */; };
+		950BCA2B235E057A0013C722 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BCA2A235E057A0013C722 /* AppDelegate.swift */; };
+		950BCA2D235E057A0013C722 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BCA2C235E057A0013C722 /* ViewController.swift */; };
+		950BCA30235E057A0013C722 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950BCA2E235E057A0013C722 /* Main.storyboard */; };
+		950BCA32235E057A0013C722 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 950BCA31235E057A0013C722 /* Assets.xcassets */; };
+		950BCA35235E057A0013C722 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950BCA33235E057A0013C722 /* LaunchScreen.storyboard */; };
+		9546A9F52379AE5F001D2002 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546A9F42379AE5F001D2002 /* CustomCell.swift */; };
+		9546A9F72379B18E001D2002 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546A9F62379B18E001D2002 /* Item.swift */; };
+		9564F2D02376C43E00F3FAE9 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 9564F2CF2376C43E00F3FAE9 /* SimplePing.m */; };
+		9575769B2382ED3800144523 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 957576992382ED3800144523 /* Model.xcdatamodeld */; };
+		B78B35E68B9FC1566F18FE1A /* Pods_PingNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1378AA165B647153F2B7F87D /* Pods_PingNetwork.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1378AA165B647153F2B7F87D /* Pods_PingNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PingNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AD32F5E2512D5CE6E62AAB0 /* Pods-PingNetwork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PingNetwork.debug.xcconfig"; path = "Target Support Files/Pods-PingNetwork/Pods-PingNetwork.debug.xcconfig"; sourceTree = "<group>"; };
+		95024BEE237C633E00876333 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		950BCA27235E057A0013C722 /* PingNetwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PingNetwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		950BCA2A235E057A0013C722 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		950BCA2C235E057A0013C722 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		950BCA2F235E057A0013C722 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		950BCA31235E057A0013C722 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		950BCA34235E057A0013C722 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		950BCA36235E057A0013C722 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		950BCA3D235E0BE30013C722 /* SimplePing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
+		950BCA3E235E0C690013C722 /* PingNetwork-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PingNetwork-Bridging-Header.h"; sourceTree = "<group>"; };
+		9546A9F42379AE5F001D2002 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		9546A9F62379B18E001D2002 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		9564F2CF2376C43E00F3FAE9 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimplePing.m; path = Common/SimplePing.m; sourceTree = "<group>"; };
+		9575769A2382ED3800144523 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		F689AA02A1E82A59CBC1405B /* Pods-PingNetwork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PingNetwork.release.xcconfig"; path = "Target Support Files/Pods-PingNetwork/Pods-PingNetwork.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		950BCA24235E057A0013C722 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B78B35E68B9FC1566F18FE1A /* Pods_PingNetwork.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		950BCA1E235E057A0013C722 = {
+			isa = PBXGroup;
+			children = (
+				9564F2CF2376C43E00F3FAE9 /* SimplePing.m */,
+				950BCA3C235E09300013C722 /* Common */,
+				950BCA29235E057A0013C722 /* PingNetwork */,
+				950BCA28235E057A0013C722 /* Products */,
+				E7B658C13AA321F05981B8F1 /* Pods */,
+				963861B035D4F2B67B073ED1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		950BCA28235E057A0013C722 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				950BCA27235E057A0013C722 /* PingNetwork.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		950BCA29235E057A0013C722 /* PingNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				950BCA2A235E057A0013C722 /* AppDelegate.swift */,
+				950BCA2C235E057A0013C722 /* ViewController.swift */,
+				950BCA2E235E057A0013C722 /* Main.storyboard */,
+				950BCA31235E057A0013C722 /* Assets.xcassets */,
+				950BCA33235E057A0013C722 /* LaunchScreen.storyboard */,
+				950BCA36235E057A0013C722 /* Info.plist */,
+				9546A9F42379AE5F001D2002 /* CustomCell.swift */,
+				9546A9F62379B18E001D2002 /* Item.swift */,
+				95024BEE237C633E00876333 /* APIClient.swift */,
+				957576992382ED3800144523 /* Model.xcdatamodeld */,
+			);
+			path = PingNetwork;
+			sourceTree = "<group>";
+		};
+		950BCA3C235E09300013C722 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				950BCA3D235E0BE30013C722 /* SimplePing.h */,
+				950BCA3E235E0C690013C722 /* PingNetwork-Bridging-Header.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		963861B035D4F2B67B073ED1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1378AA165B647153F2B7F87D /* Pods_PingNetwork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E7B658C13AA321F05981B8F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8AD32F5E2512D5CE6E62AAB0 /* Pods-PingNetwork.debug.xcconfig */,
+				F689AA02A1E82A59CBC1405B /* Pods-PingNetwork.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		950BCA26235E057A0013C722 /* PingNetwork */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 950BCA39235E057A0013C722 /* Build configuration list for PBXNativeTarget "PingNetwork" */;
+			buildPhases = (
+				35F7A0B3DD7A3F8368F43677 /* [CP] Check Pods Manifest.lock */,
+				950BCA23235E057A0013C722 /* Sources */,
+				950BCA24235E057A0013C722 /* Frameworks */,
+				950BCA25235E057A0013C722 /* Resources */,
+				E73E2621007136DE2AEC1340 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PingNetwork;
+			productName = PingNetwork;
+			productReference = 950BCA27235E057A0013C722 /* PingNetwork.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		950BCA1F235E057A0013C722 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = daind;
+				TargetAttributes = {
+					950BCA26235E057A0013C722 = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1120;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 950BCA22235E057A0013C722 /* Build configuration list for PBXProject "PingNetwork" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 950BCA1E235E057A0013C722;
+			productRefGroup = 950BCA28235E057A0013C722 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				950BCA26235E057A0013C722 /* PingNetwork */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		950BCA25235E057A0013C722 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				950BCA35235E057A0013C722 /* LaunchScreen.storyboard in Resources */,
+				950BCA32235E057A0013C722 /* Assets.xcassets in Resources */,
+				950BCA30235E057A0013C722 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		35F7A0B3DD7A3F8368F43677 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PingNetwork-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E73E2621007136DE2AEC1340 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PingNetwork/Pods-PingNetwork-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PingNetwork/Pods-PingNetwork-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		950BCA23235E057A0013C722 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9546A9F72379B18E001D2002 /* Item.swift in Sources */,
+				9564F2D02376C43E00F3FAE9 /* SimplePing.m in Sources */,
+				950BCA2D235E057A0013C722 /* ViewController.swift in Sources */,
+				9575769B2382ED3800144523 /* Model.xcdatamodeld in Sources */,
+				9546A9F52379AE5F001D2002 /* CustomCell.swift in Sources */,
+				950BCA2B235E057A0013C722 /* AppDelegate.swift in Sources */,
+				95024BEF237C633E00876333 /* APIClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		950BCA2E235E057A0013C722 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				950BCA2F235E057A0013C722 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		950BCA33235E057A0013C722 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				950BCA34235E057A0013C722 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		950BCA37235E057A0013C722 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		950BCA38235E057A0013C722 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		950BCA3A235E057A0013C722 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8AD32F5E2512D5CE6E62AAB0 /* Pods-PingNetwork.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9JB3N7BYCX;
+				INFOPLIST_FILE = PingNetwork/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = daind.example.PingNetwork;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Common/PingNetwork-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		950BCA3B235E057A0013C722 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F689AA02A1E82A59CBC1405B /* Pods-PingNetwork.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9JB3N7BYCX;
+				INFOPLIST_FILE = PingNetwork/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = daind.example.PingNetwork;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Common/PingNetwork-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		950BCA22235E057A0013C722 /* Build configuration list for PBXProject "PingNetwork" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				950BCA37235E057A0013C722 /* Debug */,
+				950BCA38235E057A0013C722 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		950BCA39235E057A0013C722 /* Build configuration list for PBXNativeTarget "PingNetwork" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				950BCA3A235E057A0013C722 /* Debug */,
+				950BCA3B235E057A0013C722 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		957576992382ED3800144523 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9575769A2382ED3800144523 /* Model.xcdatamodel */,
+			);
+			currentVersion = 9575769A2382ED3800144523 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 950BCA1F235E057A0013C722 /* Project object */;
+}
