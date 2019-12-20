@@ -13,14 +13,15 @@ import GoogleMobileAds
 
 class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate, GADBannerViewDelegate {
     
-    lazy var adBannerView: GADBannerView = {
-        let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-        adBannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        adBannerView.delegate = self
-        adBannerView.rootViewController = self
-        return adBannerView
-    }()
-    
+//    lazy var adBannerView: GADBannerView = {
+//        let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+//        adBannerView.adUnitID = "ca-app-pub-4578897578947744/6534346892"
+//        adBannerView.delegate = self
+//        adBannerView.rootViewController = self
+//        return adBannerView
+//    }()
+    //var adBannerView: GADBannerView?
+    @IBOutlet weak var adBannerView: GADBannerView!
     var interstitial: GADInterstitial?
     
     var arrayOfItems:[Item] = [Item]()
@@ -51,7 +52,8 @@ class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate,
     var autoCompleteCharacterCount = 0
     var timer = Timer()
     
-    
+    var bannerView: GADBannerView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewPing.contentInset = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
@@ -63,9 +65,34 @@ class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate,
         print(userDefaults.object(forKey: Keys.address) as? [String] ?? [String]())
         
         // Request a Google Ad
-        adBannerView.load(GADRequest())
+        //bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView = GADBannerView(frame: CGRect(x: 0, y: 0, width: 250, height: 150))
+        bannerView.adUnitID = "ca-app-pub-8501671653071605/1974659335"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        addBannerViewToView(bannerView)
     }
     
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: bottomLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
+    }
     
     var pinger: SimplePing?
     var sendTimer: Timer?
