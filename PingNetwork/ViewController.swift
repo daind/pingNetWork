@@ -67,9 +67,11 @@ class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate,
         // Request a Google Ad
         //bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         bannerView = GADBannerView(frame: CGRect(x: 0, y: 0, width: 250, height: 150))
-        bannerView.adUnitID = "ca-app-pub-8501671653071605/1974659335"
+        bannerView.adUnitID = "ca-app-pub-4578897578947744/6534346892"
         bannerView.rootViewController = self
-        bannerView.load(GADRequest())
+        var request = GADRequest()
+        request.testDevices = [ kGADSimulatorID] as! [String]
+        bannerView.load(request)
         addBannerViewToView(bannerView)
     }
     
