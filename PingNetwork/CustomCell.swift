@@ -16,6 +16,10 @@ class CustomCell: UITableViewCell {
         cellLabel.text = item.text
         cellLabel.backgroundColor = UIColor.clear
         self.cellLabel.sizeToFit()
-        self.cellLabel.preferredMaxLayoutWidth = 500
+        cellLabel.adjustsFontSizeToFitWidth = true
     }
+    
+    
 }
+
+

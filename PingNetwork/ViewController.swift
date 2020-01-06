@@ -10,37 +10,40 @@ import UIKit
 import CoreData
 import GoogleMobileAds
 
+extension UIViewController {
+    func HideKeyboard() {
+        // dismiss keyboard
+        let Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyBoard))
+        view.addGestureRecognizer(Tap)
+    }
+    
+    @objc func DismissKeyBoard(){
+        view.endEditing(true)
+    }
+}
 
 class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate, GADBannerViewDelegate {
     
-//    lazy var adBannerView: GADBannerView = {
-//        let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-//        adBannerView.adUnitID = "ca-app-pub-4578897578947744/6534346892"
-//        adBannerView.delegate = self
-//        adBannerView.rootViewController = self
-//        return adBannerView
-//    }()
-    //var adBannerView: GADBannerView?
     @IBOutlet weak var adBannerView: GADBannerView!
-    var interstitial: GADInterstitial?
     
     var arrayOfItems:[Item] = [Item]()
     var emptyDict: [UInt16: Double] = [:]
 
     @IBOutlet weak var startText: UIButton!
     @IBAction func pingData(_ sender: Any) {
+        inputText.resignFirstResponder()
         if (startText.currentTitle == "Ping") {
             self.start()
         } else {
             self.stop()
         }
-        
+        HideKeyboard()
     }
     @IBOutlet weak var inputText: UITextField!
     
     @IBOutlet weak var tableViewPing: UITableView!
     
-    @IBOutlet weak var titlePing: UILabel!
+//    @IBOutlet weak var titlePing: UILabel!
     var autoCompletionPossibilities = ["google.com", "facebook.com"]
     
     let userDefaults = UserDefaults.standard
@@ -60,38 +63,68 @@ class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate,
         tableViewPing.separatorStyle = .none
         startText.layer.cornerRadius = 5;
         self.inputText.text = "google.com"
+        startText.contentEdgeInsets = UIEdgeInsets(top: 5,left: 8,bottom: 5,right: 8)
+//        tableViewPing.frame.size = CGRect(origin: 56, size: 32)
+        tableViewPing.frame =  CGRect(x:0, y: 0, width:UIScreen.main.bounds.size.width, height:0)
         checkForFirstRun()
         
-        print(userDefaults.object(forKey: Keys.address) as? [String] ?? [String]())
+//        print(userDefaults.object(forKey: Keys.address) as? [String] ?? [String]())
         
         // Request a Google Ad
-        //bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        bannerView = GADBannerView(frame: CGRect(x: 0, y: 0, width: 250, height: 150))
-        bannerView.adUnitID = "ca-app-pub-8501671653071605/1974659335"
+        bannerView = GADBannerView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 50))
+        bannerView.adUnitID = "ca-app-pub-4578897578947744/6534346892"
         bannerView.rootViewController = self
-        bannerView.load(GADRequest())
+        let request = GADRequest()
+//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ kGADSimulatorID] as? [String]
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "ed6c1d17e4bdbfecd1bdee7ed02122f1" ]
+        bannerView.load(request)
         addBannerViewToView(bannerView)
+        
+        // dismiss keyboard
+        inputText.delegate = self
+        self.HideKeyboard()
     }
     
-    func addBannerViewToView(_ bannerView: GADBannerView) {
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
-        view.addConstraints(
-            [NSLayoutConstraint(item: bannerView,
-                                attribute: .bottom,
-                                relatedBy: .equal,
-                                toItem: bottomLayoutGuide,
-                                attribute: .top,
-                                multiplier: 1,
-                                constant: 0),
-             NSLayoutConstraint(item: bannerView,
-                                attribute: .centerX,
-                                relatedBy: .equal,
-                                toItem: view,
-                                attribute: .centerX,
-                                multiplier: 1,
-                                constant: 0)
-            ])
+    func addBannerViewToView(_ bannerView: UIView) {
+      bannerView.translatesAutoresizingMaskIntoConstraints = false
+      view.addSubview(bannerView)
+      if #available(iOS 11.0, *) {
+        positionBannerAtBottomOfSafeArea(bannerView)
+      }
+      else {
+        positionBannerAtBottomOfView(bannerView)
+      }
+    }
+    
+    @available (iOS 11, *)
+    func positionBannerAtBottomOfSafeArea(_ bannerView: UIView) {
+      // Position the banner. Stick it to the bottom of the Safe Area.
+      // Centered horizontally.
+      let guide: UILayoutGuide = view.safeAreaLayoutGuide
+
+      NSLayoutConstraint.activate(
+        [bannerView.centerXAnchor.constraint(equalTo: guide.centerXAnchor),
+         bannerView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)]
+      )
+    }
+    
+    func positionBannerAtBottomOfView(_ bannerView: UIView) {
+      // Center the banner horizontally.
+      view.addConstraint(NSLayoutConstraint(item: bannerView,
+                                            attribute: .centerX,
+                                            relatedBy: .equal,
+                                            toItem: view,
+                                            attribute: .centerX,
+                                            multiplier: 1,
+                                            constant: 0))
+      // Lock the banner to the top of the bottom layout guide.
+      view.addConstraint(NSLayoutConstraint(item: bannerView,
+                                            attribute: .bottom,
+                                            relatedBy: .equal,
+                                            toItem: self.bottomLayoutGuide,
+                                            attribute: .top,
+                                            multiplier: 1,
+                                            constant: 0))
     }
     
     var pinger: SimplePing?
@@ -144,7 +177,10 @@ class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate,
         
         // add title
         let title = "PING " + inputText.text! + "( " + fromPing + "):"
-        titlePing.text = title
+//        titlePing.text = title
+        
+        arrayOfItems.append(Item(text: title))
+        tableViewPing.reloadData()
         
         // send the first ping straight way
         self.sendPing()
@@ -159,8 +195,11 @@ class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate,
         NSLog("failed: %@", ViewController.shortErrorFromError(error: error as NSError))
         removeAddress()
         let variableString = "ping: cannot resolve " + inputText.text! + ": " + ViewController.shortErrorFromError(error: error as NSError)
-        arrayOfItems.insert(Item(text: variableString), at: 0)
+        arrayOfItems.append(Item(text: variableString))
         tableViewPing.reloadData()
+        let lastRowIndex = self.tableViewPing!.numberOfRows(inSection: 0) - 1
+        let pathToLastRow = IndexPath.init(row: lastRowIndex, section: 0)
+        tableViewPing.scrollToRow(at: pathToLastRow, at: .none, animated: true)
         self.stop()
     }
     
@@ -190,9 +229,12 @@ class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate,
         let var1 = "ping: sendTo: " + String(ViewController.shortErrorFromError(error: error as NSError));
         let var2 = "Request timeout for icmp_seq " + String(sequenceNumber)
         
-        arrayOfItems.insert(Item(text: var1), at: 0)
-        arrayOfItems.insert(Item(text: var2), at: 0)
+        arrayOfItems.append(Item(text: var1))
+        arrayOfItems.append(Item(text: var2))
         tableViewPing.reloadData()
+        let lastRowIndex = self.tableViewPing!.numberOfRows(inSection: 0) - 1
+        let pathToLastRow = IndexPath.init(row: lastRowIndex, section: 0)
+        tableViewPing.scrollToRow(at: pathToLastRow, at: .none, animated: true)
     }
     
     func simplePing(_ pinger: SimplePing, didReceivePingResponsePacket packet: Data, sequenceNumber: UInt16) {
@@ -256,7 +298,6 @@ class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate,
         return error.localizedDescription
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -364,7 +405,6 @@ class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate,
             userDefaults.set(autoCompletionPossibilities, forKey: Keys.address)
             print(userDefaults.object(forKey: Keys.address) as? [String] ?? [String]())
             userDefaults.set(true, forKey: Keys.firstRun)
-
         }
     }
     
@@ -374,12 +414,28 @@ class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate,
         print("Banner loaded successfully")
         tableViewPing.tableHeaderView?.frame = bannerView.frame
         tableViewPing.tableHeaderView = bannerView
-        
     }
      
     func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
         print("Fail to receive ads")
         print(error)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        textField.resignFirstResponder()
+        performAction()
+        self.view.endEditing(true)
+        return true
+    }
+    
+    func performAction() {
+        //action events
+        if (startText.currentTitle == "Ping") {
+            self.start()
+        } else {
+            self.stop()
+        }
     }
 
 
@@ -410,6 +466,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+
+
 
 
 

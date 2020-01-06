@@ -18,12 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-       // GADMobileAds.sharedInstance().start(completionHandler: nil)
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers
-//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "ca-app-pub-3940256099942544/2934735716" ];
-//        request.testDevices = @[ @"2077ef9a63d2b398840261c8221a0c9b" ];
-        //GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ kGADSimulatorID ] as! [String];
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ kGADSimulatorID] as? [String]
         return true
     }
 
