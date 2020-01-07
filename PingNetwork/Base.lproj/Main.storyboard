@@ -21,6 +21,7 @@
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="textFieldChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="kCE-Ws-2OP"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="88A-Sd-nLP"/>
                                 </connections>
                             </textField>
@@ -80,6 +81,25 @@
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MZp-xr-zJ8">
+                                <rect key="frame" x="8" y="74" width="330" height="142"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="suggectionCell" id="dHv-B6-9PF">
+                                        <rect key="frame" x="0.0" y="28" width="330" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dHv-B6-9PF" id="X9j-mQ-Yby">
+                                            <rect key="frame" x="0.0" y="0.0" width="330" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="OUU-p2-60A"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="XD7-oH-iFC"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -103,6 +123,7 @@
                         <outlet property="adBannerView" destination="KUM-ds-7Cs" id="HHb-Er-nEd"/>
                         <outlet property="inputText" destination="bmG-yo-SmF" id="Xke-4Q-Pcq"/>
                         <outlet property="startText" destination="SsW-6a-TdO" id="V2T-Ya-w4D"/>
+                        <outlet property="suggestionTable" destination="MZp-xr-zJ8" id="1Rq-Il-7TW"/>
                         <outlet property="tableViewPing" destination="gIp-xA-Er1" id="Wm8-Wb-Nvl"/>
                     </connections>
                 </viewController>

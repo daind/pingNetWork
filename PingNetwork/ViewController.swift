@@ -14,7 +14,8 @@ extension UIViewController {
     func HideKeyboard() {
         // dismiss keyboard
         let Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyBoard))
-        view.addGestureRecognizer(Tap)
+        Tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(Tap)
     }
     
     @objc func DismissKeyBoard(){
@@ -43,7 +44,13 @@ class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate,
     
     @IBOutlet weak var tableViewPing: UITableView!
     
-//    @IBOutlet weak var titlePing: UILabel!
+    @IBOutlet weak var suggestionTable: UITableView!
+    
+    @IBAction func textFieldChanged(_ sender: Any) {
+        suggestionTable.isHidden = true
+    }
+    
+    //    @IBOutlet weak var titlePing: UILabel!
     var autoCompletionPossibilities = ["google.com", "facebook.com"]
     
     let userDefaults = UserDefaults.standard
@@ -83,6 +90,18 @@ class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate,
         // dismiss keyboard
         inputText.delegate = self
         self.HideKeyboard()
+        
+//        self.suggestionTable.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+
+        self.suggestionTable.delegate = self
+        self.suggestionTable.dataSource = self
+        self.suggestionTable.allowsSelection = true
+        
+        suggestionTable.isHidden = true
+
+        // Manage tableView visibility via TouchDown in textField
+        inputText.addTarget(self, action: #selector(textFieldActive), for: UIControl.Event.touchDown)
+        
     }
     
     func addBannerViewToView(_ bannerView: UIView) {
@@ -312,6 +331,24 @@ class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate,
 
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        guard let touch:UITouch = touches.first else
+        {
+            return;
+        }
+        if touch.view != suggestionTable
+        {
+            inputText.endEditing(true)
+            suggestionTable.isHidden = true
+        }
+    }
+    
+    // Toggle the tableView visibility when click on textField
+    @objc func textFieldActive() {
+        suggestionTable.isHidden = !suggestionTable.isHidden
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool { //1
         var subString = (textField.text!.capitalized as NSString).replacingCharacters(in: range, with: string) // 2
         subString = formatSubstring(subString: subString)
@@ -443,27 +480,66 @@ class ViewController: UIViewController, SimplePingDelegate, UITextFieldDelegate,
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOfItems.count
+        var numberOfRow = 1
+        switch tableView {
+        case tableViewPing:
+            numberOfRow = arrayOfItems.count
+        case suggestionTable:
+            let addressArray = userDefaults.object(forKey: Keys.address) as? [String] ?? [String]()
+            numberOfRow = addressArray.count
+        default:
+            print("Some things Wrong!!")
+        }
+        return numberOfRow
+//        return arrayOfItems.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellIdentifier") as? CustomCell {
-            cell.configureCell(item: arrayOfItems[indexPath.row])
-            return cell
+        var cell = UITableViewCell()
+        switch tableView {
+        case tableViewPing:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellIdentifier") as? CustomCell {
+                cell.configureCell(item: arrayOfItems[indexPath.row])
+                return cell
+            }
+        case suggestionTable:
+            cell = tableView.dequeueReusableCell(withIdentifier: "suggectionCell", for: indexPath)
+            let addressArray = userDefaults.object(forKey: Keys.address) as? [String] ?? [String]()
+            cell.textLabel?.text = addressArray[indexPath.row]
+        default:
+            print("Some things Wrong!!")
         }
-        return UITableViewCell()
+        return cell
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        let addressArray = userDefaults.object(forKey: Keys.address) as? [String] ?? [String]()
+        print("hahaha")
+        print(addressArray[indexPath.row])
+
+        switch tableView {
+        case suggestionTable:
+            print("hahaha")
+            self.inputText.text = addressArray[indexPath.row]
+            suggestionTable.isHidden = true
+            inputText.endEditing(true)
+
+        default:
+            print("Some things Wrong!!")
+        }
+//        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
